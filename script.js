@@ -47,7 +47,7 @@ specialChars = specialChars[randomIndex(specialChars.length)];
 var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 numbers = numbers[randomIndex(numbers.length)];
 //convert numbers to a string to be able to write into the password as text
-numbers = numbers.toString()
+numbers = numbers.toString();
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -71,31 +71,33 @@ var pool = [];
 
 // Using concat to write the variable to the pool based on true input from confirm
 if(confirmUpperCase){
-  pool = pool.concat(upperCaseLetters);
+  pool = pool.concat(upperCaseLetters)
 }
 
 if(confirmLowerCase){
-  pool = pool.concat(lowerCaseLetters);
+  pool = pool.concat(lowerCaseLetters)
 }
 
 if(confirmSpecialChars){
-  pool = pool.concat(specialChars);
+  pool = pool.concat(specialChars)
 }
 
 if(confirmNumbers){
-  pool = pool.concat(numbers);
+  pool = pool.concat(numbers)
 }
+
+
 //console log to check what is being concat into array
- console.log(pool);
+//  console.log(pool);
 
  //set a string
 var password = "";
 
-for (var i=0; i<getpasswordLength; i++){
-  password = password + pool[Math.floor(Math.random() * password.length)];
- console.log(password);
+for (var i = 0; i < getpasswordLength; i++) {
+  password = password + pool[Math.floor(Math.random() * pool.length)];
+  console.log(password)
 }
-console.log(password);
+
 // numbers = numbers[randomIndex(numbers.length)];
 
   return password;
