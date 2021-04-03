@@ -2,18 +2,11 @@
 var generateBtn = document.querySelector("#generate");
 var pool;
 var password;
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
 
-  //TODO CODE HERE
-  passwordText.value = password;
 
-}
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
-// DECLARE ADN RANDOMIZE LETTERS, SPEICALS, AND NUMBERS
+// DECLARE AND RANDOMIZE LETTERS, SPEICALS, AND NUMBERS
 
 //generating uppercase letters charcode
 function getUppercaseLetters(){
@@ -24,9 +17,7 @@ function getUppercaseLetters(){
   return upperCaseLetters;
 }
 var upperCaseLetters = getUppercaseLetters();
-upperCaseLetters = upperCaseLetters[randomIndex(upperCaseLetters.length)];
-
-
+// upperCaseLetters = upperCaseLetters[randomIndex(upperCaseLetters.length)];
 
 //generating lowercase letters from charcode
 function getLowercaseLetters(){
@@ -37,18 +28,29 @@ function getLowercaseLetters(){
   return lowerCaseLetters;
 }
 var lowerCaseLetters = getLowercaseLetters();
-lowerCaseLetters = lowerCaseLetters[randomIndex(lowerCaseLetters.length)];
+// lowerCaseLetters = lowerCaseLetters[randomIndex(lowerCaseLetters.length)];
 
 //special characters array
 var specialChars = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+"];
-specialChars = specialChars[randomIndex(specialChars.length)];
+// specialChars = specialChars[randomIndex(specialChars.length)];
 
 //numbers array
 var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-numbers = numbers[randomIndex(numbers.length)];
+// numbers = numbers[randomIndex(numbers.length)];
 //convert numbers to a string to be able to write into the password as text
 numbers = numbers.toString();
 
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------
+// FUNCTION THAT WILL WAIT FOR THE CLICK TO BEGIN WRITING THE PASSWORD
+
+function writePassword() {
+
+  //SETTING THE PASSWORD VALUE EQUAL TO THE VALUE OF THE FUNCTION
+  var password = generatePassword();
+
+//REPLACING THE TEXT VALUE OF THE PASSWORD ID TEXTAREA
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 //FUNCTION THAT GENERATES THE PASSWORD
@@ -90,19 +92,20 @@ if(confirmNumbers){
 //console log to check what is being concat into array
 //  console.log(pool);
 
- //set a string
+ //set a string value to password variable
 var password = "";
 
+//for loop until it reached the input password length. then the pool array is being randomized
 for (var i = 0; i < getpasswordLength; i++) {
   password = password + pool[Math.floor(Math.random() * pool.length)];
   console.log(password)
 }
-
-// numbers = numbers[randomIndex(numbers.length)];
-
   return password;
-}
 
+  // Declaring the generate password function
+  generatePassword();
+}
+}
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 // DECLARING FUNCTIONS
@@ -115,7 +118,6 @@ function randomIndex(length) {
 getUppercaseLetters();
 getLowercaseLetters();
 randomIndex();
-generatePassword();
 
 
 // Add event listener to generate button
